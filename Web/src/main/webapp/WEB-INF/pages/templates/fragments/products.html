@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+</head>
+
+<body>
+
+<div th:fragment="products">
+
+    <div class="product-preview-container" th:each="product : ${products}">
+
+            <h1 th:text="${product.name}"></h1>
+
+        <img class="product-image"
+                 th:src="@{|/productImage?productId=${product.id}|}" />
+
+        <h3 th:text="${product.description}" class="panel-body">Description</h3>
+            <div th:inline="text" class="col-md-2">Price: [[${product.price}]] $</div>
+            <div th:inline="text" class="col-md-9">In Stock: [[${product.quantity}]]</div>
+            <a th:href="@{'/shoppingCart/addProduct/{id}'(id=${product.id})}" class="col-md-1"
+               sec:authorize="isAuthenticated()" th:if="${product.quantity}>0">
+                <button type="button" class="btn btn-primary" th:text="Buy">Buy</button>
+            </a>
+        <br></br>
+             <a th:href="@{'/user/description/{id}'(id=${product.id})}" class="col-md-1"
+                sec:authorize="isAuthenticated()" th:if="${product.quantity}>0">
+                <button type="button" class="btn btn-primary" th:text="View">View</button>
+             </a>
+        <br></br>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="admin">
+            <a th:href="@{|/admin/product?productId=${product.id}|}"><i class="fas fa-times"></i>
+                <button class="btn">Edit</button>
+            </a>
+            <br></br>
+            <a th:href="@{'product/delete/' + ${product.getId()}}" ><i class="fas fa-times"></i>
+                <button class="btn">Delete</button>
+            </a>
+        </div>
+        <br></br>
+    </div>
+</div>
+</body>
+</html>

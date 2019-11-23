@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>"${category.name}"</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<div th:replace="templates/fragments/header :: navbar"/>
+
+<div th:if="${not #lists.isEmpty(products)}">
+
+    <div th:replace="templates/fragments/products :: products"/>
+
+</div>
+<div th:replace="templates/fragments/footer :: footer"/>
+</body>
+</html>

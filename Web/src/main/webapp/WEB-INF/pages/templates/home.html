@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+    <div th:replace="templates/fragments/header :: header"/>
+</head>
+
+<body>
+
+<div th:replace="templates/fragments/header :: navbar"/>
+
+    <div th:replace="templates/fragments/products :: products"/>
+
+    <div th:replace="templates/fragments/pagination :: pagination(URLparameter='/home')"/>
+
+<div th:replace="templates/fragments/footer :: footer"/>
+
+</body>
+</html>
