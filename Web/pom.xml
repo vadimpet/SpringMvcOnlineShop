@@ -12,7 +12,7 @@
     <properties>
         <spring.version>4.2.0.RELEASE</spring.version>
         <spring-security.version>4.0.2.RELEASE</spring-security.version>
-        <spring-data-jpa.version>1.8.2.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
         <spring-faces.version>2.5.1.RELEASE</spring-faces.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
         <hibernate-validator.version>5.2.1.Final</hibernate-validator.version>
